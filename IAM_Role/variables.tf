@@ -21,14 +21,20 @@ variable "manag_policy_name" {
   default = "Terraform-Policy"
 }
 
+variable "manag-policy-arn"{
+  type = string
+  description = "(OPTIONAL) Policy ARN that needs to be attached to IAM ROLE"
+  default = null
+}
+
 variable "inline-policy" {
   type = string
-  description = "(REQUIRED) Inline Polcy, should be in JSON or YAML"
+  description = "(OPTIONAL) Inline Polcy, should be in YAML"
   default = null
 }
 
 variable "manag-policy" {
   type = string
-  description = "(REQUIRED) Management Polcy, should be in JSON or YAML"
+  description = "(OPTIONAL) Management Polcy, should be in YAML"
   default = null
 }
