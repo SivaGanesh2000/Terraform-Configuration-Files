@@ -6,15 +6,12 @@ resource "aws_eks_cluster" "eks"{
       authentication_mode = "API_AND_CONFIG_MAP"
     }
 
-    role_arn = aws_iam_role.cluster.arn
+    role_arn = module.iam_role.IAM_Details["Role_Arn"]
 
     vpc_config {
       endpoint_public_access = true
 
-      subnet_ids = [
-        aws_subnet.sub.id,
-        aws_subnet.sub2.id
-      ]
+      subnet_ids = module.vpc.Public_Subnet_Details[*].Id
     }
 
     
