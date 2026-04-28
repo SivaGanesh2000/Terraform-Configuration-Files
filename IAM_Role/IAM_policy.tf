@@ -19,3 +19,9 @@ resource "aws_iam_role_policy_attachment" "rpa" {
     role = aws_iam_role.role.name
     policy_arn = aws_iam_policy.policy[*].arn 
 }
+
+resource "aws_iam_role_policy_attachment" "pol-arn" {
+    count = length(var.manag-policy-arn)
+    role = aws_iam_role.role.name
+    policy_arn = var.manag-policy-arn[count.index]
+}
