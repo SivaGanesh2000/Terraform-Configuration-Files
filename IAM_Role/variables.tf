@@ -24,11 +24,11 @@ variable "manag_policy_name" {
 variable "inline-policy" {
   type = string
   description = "(REQUIRED) Inline Polcy, should be in JSON or YAML"
-  default = ""
+  default = null
 }
 
 variable "manag-policy" {
   type = string
   description = "(REQUIRED) Management Polcy, should be in JSON or YAML"
-  default = ""
+  default = null
 }
