@@ -1,15 +1,16 @@
 resource "aws_iam_role_policy" "pol"{
-    count = var.assume-role-policy != null ? 1:0
+    count = var.inline-policy != null ? 1:0
 
     name = var.inline_policy_name
     role = aws_iam_role.role.id
 
-    policy = file(var.inline-policy)
+    policy = try(file(var.inline-policy), null)
 }
 
 resource "aws_iam_policy" "policy" {
+  count = var.manag-policy != null ? 1:0
   name = var.manag_policy_name
-  policy = file(var.manag-policy)
+  policy = try(file(var.manag-policy), null)
 }
 
 
