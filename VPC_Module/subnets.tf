@@ -1,8 +1,14 @@
+data "aws_availability_zones" "zone" {
+
+}
+
 resource "aws_subnet" "pbl_subnets" {
-  for_each = var.public_Subnet_CIDRs
+  count = var.public_Subnet_CIDRs
 
   vpc_id     = aws_vpc.vpc.id
   cidr_block = each.value
+
+  availability_zone = data.aws_availability_zones.zone[count.index % length(data.aws_availability_zones.zone)]
 
   tags = merge(var.subnet_tags, var.tags, {
     Name = try(
@@ -13,10 +19,12 @@ resource "aws_subnet" "pbl_subnets" {
 }
 
 resource "aws_subnet" "prvt_subnets" {
-  for_each = var.private_Subnet_CIDRs
+  count = var.private_Subnet_CIDRs
 
   vpc_id     = aws_vpc.vpc.id
   cidr_block = each.value
+
+  availability_zone = data.aws_availability_zones.zone[count.index % length(data.aws_availability_zones.zone)]
 
   tags = try(var.subnet_tags, var.tags, {
     Name = try(
