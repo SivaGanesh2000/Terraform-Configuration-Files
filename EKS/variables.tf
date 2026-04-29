@@ -27,3 +27,8 @@ variable "instance_types" {
   description = "(REQUIRED) Instance Types for EC2 Node Group"
   nullable = false
 }
+
+variable "tags" {
+  type = map(string)
+  description = "(OPTIONAL) Tags for the cluster and node-groups"
+}

@@ -14,5 +14,7 @@ resource "aws_eks_cluster" "eks"{
       subnet_ids = module.vpc.Public_Subnet_Details[*].Id
     }
 
-    
+    tags = merge(var.tags, {
+      Created = formatdate("YYYY-MM-DD", timestamp())
+    })
 }

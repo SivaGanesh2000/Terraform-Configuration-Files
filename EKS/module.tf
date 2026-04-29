@@ -23,7 +23,7 @@ module "iam_role" {
     Name = "EKS-VPC"
   }
 
-  Subnet_tags = {
+  subnet_tags = {
     Name = "EKS"
   }
 
