@@ -18,7 +18,7 @@ variable "vpc_cidr" {
 }
 
 variable "public_Subnet_CIDRs" {
-  type = set(string)
+  type = list(string)
 
   # Leave Empty if you dont want public subnets to be created
   description = "(OPTIONAL) CIDR Values for the Public Subnet."
@@ -33,7 +33,7 @@ variable "public_Subnet_CIDRs" {
 }
 
 variable "private_Subnet_CIDRs" {
-  type = set(string)
+  type = list(string)
 
   # Leave EMPTY if you dont want private subnets to be created
   description = "(OPTIONAL) CIDR Values for the Private Subnet."
