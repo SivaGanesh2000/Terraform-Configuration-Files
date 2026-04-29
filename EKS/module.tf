@@ -1,14 +1,14 @@
 module "iam_role" {
   source = "../IAM_Role"
 
-  assume-role-policy = file("./assume-pol.txt")
+  assume-role-policy = file("./assume-pol.yaml")
   role_name = var.cluster_role_name
 }
 
 module "node_iam_role" {
   source = "../IAM_Role"
 
-  assume-role-policy = file("./assume-pol.txt")
+  assume-role-policy = file("./assume-pol.yaml")
   role_name = var.cluster_role_name
 }
 
