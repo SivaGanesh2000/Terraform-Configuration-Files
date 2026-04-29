@@ -5,8 +5,8 @@ resource "aws_eks_node_group" "eks_ng"{
     version = var.node_Group_Version
     instance_types = var.instance_types
 
-    node_role_arn = module.node_iam_role.IAM_Details["Role_Arn"]
-    subnet_ids = concat(module.vpc.public_Subnet_Details[*].id, module.vpc.private_Subnet_Details[*].id)
+    node_role_arn = aws_iam_role.example.arn
+    subnet_ids = aws_subnet.ex[*].id
 
     scaling_config {
       desired_size = 1
@@ -21,11 +21,8 @@ resource "aws_eks_node_group" "eks_ng"{
     lifecycle {
       ignore_changes = [ scaling_config ]
     }
-<<<<<<< HEAD
 
     tags = merge(var.tags, {
       Created = formatdate("YYYY-MM-DD", timestamp())
     })
-=======
->>>>>>> 7f9e8e1628b537968270e1f4bb2ecf62a1d4117e
 }
