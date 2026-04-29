@@ -34,4 +34,5 @@ variable "instance_types" {
 
 variable "tags" {
   type = map(string)
+  description = "(OPTIONAL) Tags for the cluster and node-groups"
 }

@@ -15,7 +15,6 @@ resource "aws_eks_cluster" "eks"{
     }
 
     tags = merge(var.tags, {
-      Created = format("YYYY-MM-DD", timestamp())
+      Created = formatdate("YYYY-MM-DD", timestamp())
     })
-    
 }
