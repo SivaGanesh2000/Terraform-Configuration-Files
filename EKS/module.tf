@@ -7,12 +7,13 @@ module "iam_role" {
 
 module "node_iam_role" {
   source = "../IAM_Role"
-
-  assume-role-policy = file("./assume-pol.yaml")
-  role_name = var.cluster_role_name
+  
+  assume-role-policy = file("./node-assume-pol.yaml")
+  role_name = length(var.node_role_name) >0 ? var.node_role_name: "${var.cluster_role_name}-Node-Group"
+  manag-policy-arn = var.manag-pol-arn
 }
 
-module "iam_role" {
+module "vpc" {
   source = "../VPC_Module"
 
   region = "us-east-1"

@@ -11,7 +11,7 @@ resource "aws_eks_cluster" "eks"{
     vpc_config {
       endpoint_public_access = true
 
-      subnet_ids = module.vpc.Public_Subnet_Details[*].Id
+      subnet_ids = [for name in module.vpc.Public_Subnet_Details: name.Id]
     }
 
     tags = merge(var.tags, {

@@ -26,6 +26,17 @@ variable "node_Group_Version" {
   nullable = false
 }
 
+variable "node_role_name"{
+  type = string
+  description = "(OPTIONAL) Name of the node group role"
+  default = ""
+}
+
+variable "manag-pol-arn"{
+  type = list(string)
+  description = "(OPTIONAL) Mangement Policy ARN"
+}
+
 variable "instance_types" {
   type = list(string)
   description = "(REQUIRED) Instance Types for EC2 Node Group"

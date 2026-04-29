@@ -5,8 +5,9 @@ resource "aws_eks_node_group" "eks_ng"{
     version = var.node_Group_Version
     instance_types = var.instance_types
 
-    node_role_arn = aws_iam_role.example.arn
-    subnet_ids = aws_subnet.ex[*].id
+    node_role_arn = module.node_iam_role.IAM_Details["Role_Arn"]
+    subnet_ids = concat([for name in module.vpc.Public_Subnet_Details: name.Id], 
+                        [for subnet_name in module.vpc.Private_Subnet_Details: subnet_name.id])
 
     scaling_config {
       desired_size = 1

@@ -22,7 +22,7 @@ variable "manag_policy_name" {
 }
 
 variable "manag-policy-arn"{
-  type = string
+  type = list(string)
   description = "(OPTIONAL) Policy ARN that needs to be attached to IAM ROLE"
   default = null
 }
@@ -38,3 +38,4 @@ variable "manag-policy" {
   description = "(OPTIONAL) Management Polcy, should be in YAML"
   default = null
 }
+  
