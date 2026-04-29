@@ -21,8 +21,11 @@ resource "aws_eks_node_group" "eks_ng"{
     lifecycle {
       ignore_changes = [ scaling_config ]
     }
+<<<<<<< HEAD
 
     tags = merge(var.tags, {
       Created = formatdate("YYYY-MM-DD", timestamp())
     })
+=======
+>>>>>>> 7f9e8e1628b537968270e1f4bb2ecf62a1d4117e
 }
