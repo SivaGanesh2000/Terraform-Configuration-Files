@@ -18,7 +18,11 @@ resource "aws_eks_node_group" "eks_ng"{
       max_unavailable = 1
     }
 
+    tags = merge(var.tags, {
+      Created = format("YYYY-MM-DD", timestamp())
+    })
+
     lifecycle {
-      ignore_changes = [ scaling_config ]
+      ignore_changes = [ scaling_config, tags ]
     }
 }

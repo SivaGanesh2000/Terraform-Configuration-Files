@@ -1,14 +1,14 @@
 module "iam_role" {
   source = "../IAM_Role"
 
-  assume_role_policy = file("./assume-pol.txt")
+  assume-role-policy = file("./assume-pol.txt")
   role_name = var.cluster_role_name
 }
 
-module "iam_role" {
+module "node_iam_role" {
   source = "../IAM_Role"
 
-  assume_role_policy = file("./assume-pol.txt")
+  assume-role-policy = file("./assume-pol.txt")
   role_name = var.cluster_role_name
 }
 
@@ -23,7 +23,7 @@ module "iam_role" {
     Name = "EKS-VPC"
   }
 
-  Subnet_tags = {
+  subnet_tags = {
     Name = "EKS"
   }
 
