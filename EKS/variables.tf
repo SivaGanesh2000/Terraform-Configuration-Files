@@ -10,6 +10,10 @@ variable "cluster_version" {
   nullable = false
 }
 
+variable "cluster_role_name" {
+  type = string
+}
+
 variable "node_Group_Name" {
   type = string
   description = "(REQUIRED) Name of the Node Group"

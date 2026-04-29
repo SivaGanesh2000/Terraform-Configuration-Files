@@ -19,7 +19,7 @@ resource "aws_eks_node_group" "eks_ng"{
     }
 
     lifecycle {
-      ignore_changes = [ scaling_config ]
+      ignore_changes = [ scaling_config, tags ]
     }
 
     tags = merge(var.tags, {
