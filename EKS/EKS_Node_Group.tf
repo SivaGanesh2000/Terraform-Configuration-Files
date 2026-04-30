@@ -1,3 +1,9 @@
+resource "aws_eks_access_entry" "nodes" {
+  cluster_name  = aws_eks_cluster.eks.name
+  principal_arn = module.node_iam_role.IAM_Details["Role_Arn"]
+  type          = "EC2_LINUX"
+}
+
 resource "aws_eks_node_group" "eks_ng"{
     cluster_name = aws_eks_cluster.eks.name
 
