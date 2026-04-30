@@ -1,14 +1,19 @@
 cluster_Name = "EKS-GitOps"
 cluster_version = "1.34"
 cluster_role_name = "EKS-Cluster-Role"
+cluster_pol_arn =  [
+    "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
+    "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
+  ]
 
 node_Group_Name = "EKS-GitOps-Node-Group"
 node_Group_Version = "1.34"
 manag-pol-arn = [ "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
                     "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy",
-                    "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly" ]
+                    "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",
+                    "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"  ]
 
-instance_types = [ "t3.micro" ]
+instance_types = [ "t2.micro" ]
 
 tags = {
     Description = "Created from Terraform for GitOps Task"

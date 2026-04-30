@@ -24,6 +24,7 @@ resource "aws_eks_node_group" "eks_ng"{
     }
 
     tags = merge(var.tags, {
+      Name = try(var.tags["Name"], "EKS-Worker-Node")
       Created = formatdate("YYYY-MM-DD", timestamp())
     })
 }

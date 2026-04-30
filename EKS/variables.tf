@@ -14,6 +14,10 @@ variable "cluster_role_name" {
   type = string
 }
 
+variable "cluster_pol_arn" {
+  type = list(string)
+}
+
 variable "node_Group_Name" {
   type = string
   description = "(REQUIRED) Name of the Node Group"

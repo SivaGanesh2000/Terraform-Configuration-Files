@@ -3,6 +3,7 @@ module "iam_role" {
 
   assume-role-policy = file("./assume-pol.yaml")
   role_name = var.cluster_role_name
+  manag-policy-arn = var.cluster_pol_arn
 }
 
 module "node_iam_role" {
@@ -19,13 +20,15 @@ module "vpc" {
   region = "us-east-1"
   vpc_cidr = "10.0.0.0/16"
 
-  public_Subnet_CIDRs = ["10.0.0.0/24", "10.0.1.0/28"]
+  public_Subnet_CIDRs = ["10.0.0.0/24", "10.0.1.0/24"]
   vpc_tags = {
     Name = "EKS-VPC"
   }
 
   subnet_tags = {
     Name = "EKS"
+    "kubernetes.io/cluster/EKS-GitOps" = "shared"
+    "kubernetes.io/role/elb" = "1"
   }
 
   IGW_tags = {
