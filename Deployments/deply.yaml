@@ -10,7 +10,7 @@ spec:
         nginx: test
     spec:
       containers:
-      - mame: nginx-cont
+      - name: nginx-cont
         image: nginx
   selector:
     matchLabels:
